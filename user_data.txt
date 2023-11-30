@@ -1,4 +1,4 @@
-1;user1;user1;User1@gmail.com
+1;user1;user1;User1@gmail.com;user;1
 
-2;user2;user2;User2@gmail.com
+2;user2;user2;User2@gmail.com;user;2
 
