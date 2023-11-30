@@ -1,8 +1,7 @@
 package com.example.demo.User;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.IdGeneratorType;
 
 @Entity
 @Table(name = "\"user\"")
@@ -11,14 +10,9 @@ public class User {
     private String password;
     private  String email;
     @Id
+    @GeneratedValue
     private long id;
     public User(){
-    }
-    public User(long id, String login, String password, String email ) {
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.id = id;
     }
 
     public User(String login, String password, String email) {
