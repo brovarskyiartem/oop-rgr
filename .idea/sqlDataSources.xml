@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="77a19097-3d6d-4cac-9ce3-491f1b844b71" name="fitnes@localhost Mapping">
+      <data-sources db="472ca646-44a3-4317-b777-f7c1313de4df" ddl="c0438058-5116-446f-8269-3620eef4f0f1" />
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="c0438058-5116-446f-8269-3620eef4f0f1" />
+          <option name="name" value="fitnes@localhost (DDL)" />
+          <option name="dbmsName" value="H2" />
+          <option name="urls">
+            <array />
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+        <State>
+          <option name="id" value="85885f80-35fb-46ea-9452-3fbf4365b874" />
+          <option name="name" value="fitnes@localhost (DDL)" />
+          <option name="dbmsName" value="H2" />
+          <option name="urls">
+            <array />
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
