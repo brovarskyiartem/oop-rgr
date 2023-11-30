@@ -27,7 +27,7 @@ public class UserService {
         user.setId(userCounter.incrementAndGet());
         String filePath = "user_data.txt";
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {
-            writer.println(user.getId() + ";" + user.getLogin() + ";" + user.getPassword() + ";" + user.getEmail() + "\n");
+            writer.println(user.getId() + ";" + user.getLogin() + ";" + user.getPassword() + ";" + user.getEmail()+";"+user.getFirstname()+";"+user.getLastname() + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }

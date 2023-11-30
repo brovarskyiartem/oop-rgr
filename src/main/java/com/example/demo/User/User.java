@@ -1,12 +1,17 @@
 package com.example.demo.User;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.IdGeneratorType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "\"user\"")
-public class User {
+public class User{
     private String login;
+    private String firstname;
+    private String lastname;
     private String password;
     private  String email;
     @Id
@@ -15,11 +20,28 @@ public class User {
     public User(){
     }
 
-    public User(String login, String password, String email) {
+    public User(String login, String password, String email,String firstname, String lastname) {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setLogin(String login) {

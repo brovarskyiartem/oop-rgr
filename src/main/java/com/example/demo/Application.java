@@ -13,15 +13,10 @@ import java.util.List;
 @EnableJpaRepositories(basePackages = "com.example.demo")
 public class Application {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		User user1 = new User("user1", "user1","User1@gmail.com");
-		User user2 = new User("user2", "user2","User2@gmail.com");
-		User user3 = new User("user1", "user1","User1@gmail.com");
-		UserService.addNewUser(user1);
-		UserService.addNewUser(user2);
-		UserService.addNewUser(user3);
 	}
+
 }
 
 
