@@ -1,21 +1,16 @@
 package com.example.demo.User;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+/*import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;*/
 
 
-@Entity
-@Table(name = "\"user\"")
+
 public class User{
     private String login;
     private String firstname;
     private String lastname;
     private String password;
     private  String email;
-    @Id
-    @GeneratedValue
     private long id;
     public User(){
     }
