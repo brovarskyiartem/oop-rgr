@@ -3,10 +3,7 @@ import com.example.demo.User.User;
 import com.example.demo.User.UserService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -18,9 +15,18 @@ public class controllers {
         return "main";
     }
     @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute("login", "Логін");
+    public String showloginForm(Model model){
+        model.addAttribute("login", "login");
         return "login";
+    }
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String login, @RequestParam String password, Model model) throws IllegalArgumentException {
+        if(UserService.loginUser(login, password)){
+            return "redirect:/dashboard?login=" + login;
+        } else {
+            model.addAttribute("error", "Invalid login or password");
+            return "login";
+        }
     }
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -40,4 +46,19 @@ public class controllers {
             throw new RuntimeException(e);
         }
     }
+    @GetMapping("/dashboard")
+    public String showDashboard(@RequestParam String login, Model model) {
+        User user = UserService.getUserByLogin(login);
+
+        if (user != null) {
+            model.addAttribute("user", user);
+            return "dashboard";
+        } else {
+            model.addAttribute("error", "User not found");
+            return "login";
+        }
+    }
+
+
+
 }

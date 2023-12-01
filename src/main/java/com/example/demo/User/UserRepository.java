@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.util.Optional;
 
 public interface UserRepository {
-    String filePath = "user_data.txt";
     public static boolean isEmailExists(String email) throws IOException {
-        String filePath = "user_data.txt";
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("user_data.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(";");
@@ -25,7 +23,7 @@ public interface UserRepository {
         return false;
     }
     public static boolean isLoginExists(String login) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("user_data.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(";");
@@ -40,6 +38,4 @@ public interface UserRepository {
 
         return false;
     }
-
-    Optional<User> findByLogin(String login);
 }
