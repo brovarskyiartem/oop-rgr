@@ -1,0 +1,14 @@
+w;swimming;1;1;1
+q;swimming;1;1;1
+q;swimming;1;1;1
+q;swimming;1;1;1
+q;running;1;1;1
+q;running;1;1;1
+q;running;2;2;2
+q;cycling;1;1;1
+q;cycling;1;1;1
+q;cycling;1;1;1
+q;cycling;11;11;11
+q;running;1;1;1
+q;swimming;1;1;1
+q;running;1;1;1
