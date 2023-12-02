@@ -17,7 +17,7 @@ public class UserService {
     public static User saveUser(User user) {
         user.setId(userCounter.incrementAndGet());
         try (PrintWriter writer = new PrintWriter(new FileWriter(data, true))) {
-            writer.println(user.getId() + ";" + user.getLogin() + ";" + user.getPassword() + ";" + user.getEmail() + ";" + user.getFirstname() + ";" + user.getLastname());
+            writer.println(user.getId() + ";" + user.getLogin() + ";" + user.getPassword() + ";" + user.getEmail() + ";" + user.getFirstname() + ";" + user.getLastname()+ ";" + user.getWeight());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class UserService {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] userData = line.split(";");
-                if (userData.length == 6) {
+                if (userData.length == 7) {
                     String storedLogin = userData[1];
                     String storedPassword = userData[2];
                     if (storedLogin.equals(login) && storedPassword.equals(password)) {
@@ -55,7 +55,7 @@ public class UserService {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] userData = line.split(";");
-                if (userData.length == 6 && userData[1].equals(login)) {
+                if (userData.length == 7 && userData[1].equals(login)) {
                     User user = new User();
                     user.setId(Integer.parseInt(userData[0]));
                     user.setLogin(userData[1]);
@@ -63,6 +63,7 @@ public class UserService {
                     user.setEmail(userData[3]);
                     user.setFirstname(userData[4]);
                     user.setLastname(userData[5]);
+                    user.setWeight(Integer.parseInt(userData[6]));
                     return user;
                 }
             }

@@ -1,10 +1,7 @@
 package com.example.demo;
 import com.example.demo.User.User;
 import com.example.demo.User.UserService;
-import com.example.demo.exercise.Exercise;
-import com.example.demo.exercise.ExerciseService;
-import com.example.demo.exercise.cycling;
-import com.example.demo.exercise.running;
+import com.example.demo.exercise.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -12,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-
-import static com.example.demo.exercise.ExerciseService.findExerciseByLogin;
 
 @Controller
 public class controllers {
@@ -64,7 +59,7 @@ public class controllers {
         if (login != null) {
             User user = UserService.getUserByLogin(login);
             if (user != null) {
-                List<Exercise> exercises = findExerciseByLogin(login);
+                List<Exercise> exercises = ExerciseService.findExercisesByLogin(login);
                 model.addAttribute("user", user);
                 model.addAttribute("exercises", exercises);
                 return "dashboard";
@@ -95,17 +90,30 @@ public class controllers {
                               @RequestParam int hours,
                               @RequestParam int minutes,
                               @RequestParam int seconds,
+                              @RequestParam(required = false) Integer distance,
+                              @RequestParam(required = false) String terra,
                               Model model,
                               HttpSession session) {
         String login = (String) session.getAttribute("loggedInUser");
         if (login != null) {
-            Exercise exercise = new Exercise(exerciseType, login, hours, minutes, seconds);
-            ExerciseService.saveExercises(String.valueOf(exercise));
-            return "redirect:/dashboard";
-        } else {
-            model.addAttribute("error", "User not logged in");
-            return "login";
+            User user = UserService.getUserByLogin(login);
+            if (exerciseType.equals("running")) {
+                Exercise running = new running(login, hours, minutes, seconds, terra,user.getWeight());
+                ExerciseService.saveExercises(running);
+                return "redirect:/dashboard";
+            } else if (exerciseType.equals("swimming")) {
+                Exercise swimming = new swimming(login, hours, minutes, seconds, distance,user.getWeight());
+                ExerciseService.saveExercises(swimming);
+                return "redirect:/dashboard";
+            } else if (exerciseType.equals("cycling")) {
+                Exercise cycling = new cycling(login, hours, minutes, seconds, distance,user.getWeight());
+                ExerciseService.saveExercises(cycling);
+                return "redirect:/dashboard";
+            } else {
+                model.addAttribute("error", "User not logged in");
+                return "login";
+            }
         }
-    }
+        return "redirect:/dashboard"; }
 }
 

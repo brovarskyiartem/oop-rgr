@@ -12,14 +12,15 @@
     <p>Your details:</p>
     <ul class="list-group mb-3">
         <li class="list-group-item">Your login: <span th:text="${user.getLogin()}"></span></li>
-        <li class="list-group-item">Ypur Email: <span th:text="${user.getEmail()}"></span></li>
+        <li class="list-group-item">Your Email: <span th:text="${user.getEmail()}"></span></li>
+        <li class="list-group-item">Your Weight: <span th:text="${user.getWeight()}"></span></li>
     </ul>
     <a th:href="@{/addExercise}" class="btn btn-primary w-100 py-2 mb-3">Add Exercise</a>
     <h3 class="h3 mb-3 fw-normal">Your Exercises</h3>
     <ul class="list-group">
         <li th:each="exercise : ${exercises}" class="list-group-item">
             <span th:text="${exercise.getType()}"></span>
-             Duration: <span th:text="${exercise.getHours()} + 'h ' + ${exercise.getMinutes()} + 'm ' + ${exercise.getSeconds()} + 's'"></span>
+             Duration: <span th:text="${exercise.getHours()} + 'h ' + ${exercise.getMinutes()} + 'm ' + ${exercise.getSeconds()} + 's  Спалено калорій:'+ ${exercise.getCalories()}"></span>
         </li>
     </ul>
 </main>

@@ -5,6 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Registration Form</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 50%;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
@@ -59,6 +89,10 @@
     <div class="form-floating">
       <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
       <label for="email">Email</label>
+    </div>
+    <div class="form-floating">
+      <input type="number" name="weight" class="form-control" id="weight" placeholder="Weight" required>
+      <label for="weight">Weight</label>
     </div>
     <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
   </form>
