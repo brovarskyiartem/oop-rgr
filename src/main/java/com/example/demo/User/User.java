@@ -11,16 +11,26 @@ public class User{
     private String lastname;
     private String password;
     private  String email;
+    private int weight;
     private long id;
     public User(){
     }
 
-    public User(String login, String password, String email,String firstname, String lastname) {
+    public User(String login, String password, String email,String firstname, String lastnamem, int weight) {
         this.login = login;
         this.password = password;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.weight = weight;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public String getFirstname() {
