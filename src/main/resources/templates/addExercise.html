@@ -40,7 +40,7 @@
         }
     </style>
     <script>
-        function createInputLabel(labelText, inputName, container, options) {
+        function createInputLabelRunning(labelText, inputName, container, options) {
             var label = document.createElement("label");
             label.textContent = labelText;
             label.setAttribute("for", inputName);
@@ -49,6 +49,7 @@
             input.setAttribute("id", inputName);
             input.setAttribute("name", inputName);
             input.classList.add("form-select");
+
 
             options.forEach(function (option) {
                 var optionElement = document.createElement("option");
@@ -61,6 +62,23 @@
             container.appendChild(input);
             container.appendChild(document.createElement("br"));
         }
+        function createInputLabel(labelText, inputName,container) {
+            var label = document.createElement("label");
+            label.textContent = labelText;
+            label.setAttribute("for", inputName);
+
+            var input = document.createElement("input");
+            input.setAttribute("type", "number");
+            input.setAttribute("id", inputName);
+            input.setAttribute("name", inputName);
+            input.setAttribute("required", "true");
+            input.classList.add("form-control");
+            input.setAttribute("min", "0");
+            container.appendChild(label);
+            container.appendChild(input);
+            container.appendChild(document.createElement("br"));
+        }
+
 
         function showExerciseFields() {
             var exerciseType = document.getElementById("exerciseType").value;
@@ -68,12 +86,10 @@
             var additionalFieldsContainer = document.getElementById("additionalFieldsContainer");
             additionalFieldsContainer.innerHTML = "";
             if (exerciseType === "running") {
-                createInputLabel("Terra :", "terra", additionalFieldsContainer, ["Outdore", "Indore"]);
-            } else if (exerciseType === "cycling") {
-                createInputLabel("Distance (in km):", "distance", additionalFieldsContainer, []);
-            } else if (exerciseType === "swimming") {
-                createInputLabel("Distance (in km):", "distance", additionalFieldsContainer, []);
-            }
+                createInputLabelRunning("Terra :", "terra", additionalFieldsContainer, ["Outdore", "Indore"]);
+            }else if (exerciseType === "cycling" || exerciseType === "swimming") {
+            createInputLabel("Distance (in km):", "distance", additionalFieldsContainer);
+        }
         }
     </script>
 </head>
@@ -93,17 +109,17 @@
 
         <div class="mb-3">
             <label for="hours" class="form-label">Hours:</label>
-            <input type="number" id="hours" name="hours" required class="form-control">
+            <input type="number" id="hours" name="hours" required class="form-control" min = "0">
         </div>
 
         <div class="mb-3">
             <label for="minutes" class="form-label">Minutes:</label>
-            <input type="number" id="minutes" name="minutes" required class="form-control">
+            <input type="number" id="minutes" name="minutes" required class="form-control" min = "0">
         </div>
 
         <div class="mb-3">
             <label for="seconds" class="form-label">Seconds:</label>
-            <input type="number" id="seconds" name="seconds" required class="form-control">
+            <input type="number" id="seconds" name="seconds" required class="form-control" min = "0">
         </div>
 
         <div id="additionalFieldsContainer" class="additional-fields"></div>

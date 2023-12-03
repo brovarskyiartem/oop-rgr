@@ -1,15 +1,22 @@
 package com.example.demo.exercise;
 
+import java.time.LocalDateTime;
+
 public class running  extends Exercise{
-        private static String terra;
-    private static int calories;
+    private String terra;
+    private int calories;
 
     public running() {
     }
     public running(String login, int hours, int minutes, int seconds, int weight, String terra,int calories) {
-        super("running", login, hours, minutes, seconds, weight);
-        this.setCalories(calories);
-        this.setTerrain(terra);
+        super("running", login, hours, minutes, seconds, weight,calories);
+        this.terra = terra;
+    }
+
+    public running(String login, int hours, int minutes, int seconds, int weight, int calories, String terra, LocalDateTime addingTime) {
+        super( "running",login, hours, minutes, seconds, weight, calories, addingTime);
+        this.terra = terra;
+        this.calories = calculateCalories(hours, minutes, seconds, terra, weight);
     }
 
     public running(String login, int hours, int minutes, int seconds, String terra, int weight) {
@@ -18,7 +25,7 @@ public class running  extends Exercise{
         this.calories = calculateCalories(hours, minutes, seconds, terra, weight);
     }
 
-    public static String getTerrain() {
+    public String getTerrain() {
         return terra;
     }
     public void setTerrain(String terrain) {

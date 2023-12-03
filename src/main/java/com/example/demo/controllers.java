@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -99,14 +100,17 @@ public class controllers {
             User user = UserService.getUserByLogin(login);
             if (exerciseType.equals("running")) {
                 Exercise running = new running(login, hours, minutes, seconds, terra,user.getWeight());
+                running.setAddingTime(LocalDateTime.now());
                 ExerciseService.saveExercises(running);
                 return "redirect:/dashboard";
             } else if (exerciseType.equals("swimming")) {
                 Exercise swimming = new swimming(login, hours, minutes, seconds, distance,user.getWeight());
+                swimming.setAddingTime(LocalDateTime.now());
                 ExerciseService.saveExercises(swimming);
                 return "redirect:/dashboard";
             } else if (exerciseType.equals("cycling")) {
                 Exercise cycling = new cycling(login, hours, minutes, seconds, distance,user.getWeight());
+                cycling.setAddingTime(LocalDateTime.now());
                 ExerciseService.saveExercises(cycling);
                 return "redirect:/dashboard";
             } else {

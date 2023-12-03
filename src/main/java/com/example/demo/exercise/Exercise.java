@@ -1,5 +1,9 @@
 package com.example.demo.exercise;
 
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+
 public class Exercise {
     private String login;
     private String type;
@@ -8,6 +12,7 @@ public class Exercise {
     private int seconds;
     private  int weight;
     private  int calories;
+    private LocalDateTime addingTime;
     public Exercise() {
     }
 
@@ -19,6 +24,36 @@ public class Exercise {
         this.seconds = seconds;
         this.weight = weight;
         this.calories = calories;
+        this.addingTime = LocalDateTime.now();
+    }
+
+    public Exercise(String Type,String login, int hours, int minutes, int seconds, int weight, int calories, LocalDateTime addingTime) {
+        this.type = Type;
+        this.login = login;
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+        this.weight = weight;
+        this.calories = calories;
+        this.addingTime = addingTime;
+    }
+
+    public void setAddingTime(LocalDateTime addingTime) {
+        this.addingTime = addingTime;
+    }
+    public int getAddingYear() {
+        return addingTime.getYear();
+    }
+
+    public int getAddingMonth() {
+        return addingTime.getMonthValue();
+    }
+
+    public int getAddingDay() {
+        return addingTime.getDayOfMonth();
+    }
+    public LocalDateTime getAddingTime() {
+        return addingTime;
     }
 
     public void setCalories(int calories) {

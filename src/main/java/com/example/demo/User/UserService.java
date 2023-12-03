@@ -30,6 +30,9 @@ public class UserService {
         if (UserRepository.isLoginExists(user.getLogin())) {
             throw new IllegalArgumentException("This login is already in use by another user");
         }
+        if(user.getWeight()<=0){
+            throw new IllegalArgumentException("Incorect weight");
+        }
         saveUser(user);
     }
     public static boolean loginUser(String login, String password) {

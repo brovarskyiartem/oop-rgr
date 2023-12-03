@@ -1,20 +1,25 @@
 package com.example.demo.exercise;
 
-public class cycling extends Exercise {
-    private static long distance;
-    private static int calories;
+import java.time.LocalDateTime;
 
-    public cycling() {
-    }
-    public cycling(String login, int hours, int minutes, int seconds, int weight, int distance,int calories) {
+public class cycling extends Exercise {
+    private int distance;
+    private int calories;
+
+    public cycling(String login, int hours, int minutes, int seconds,int distance, int weight ,int calories) {
         super("cycling", login, hours, minutes, seconds, weight);
-        this.setCalories(calories);
-        this.setDistance(distance);
+        this.distance = distance;
+        this.calories = calculateCalories(hours, minutes, seconds, distance, weight);
     }
     public cycling(String login, int hours, int minutes, int seconds, int distance,int weight) {
         super("cycling",login, hours, minutes, seconds,weight);
         this.calories = calculateCalories(hours, minutes, seconds, distance, weight);
         this.distance = distance;
+    }
+    public cycling(String login, int hours, int minutes, int seconds, int weight,int distance, int calories, LocalDateTime addingTime) {
+        super("cycling", login, hours, minutes, seconds, weight, calories, addingTime);
+        this.setCalories(calories);
+        this.setDistance(distance);
     }
 
     public int getCalories() {
@@ -25,11 +30,11 @@ public class cycling extends Exercise {
         this.calories = calories;
     }
 
-    public static long getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(long distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
     public static int calculateCalories(int hours, int minutes, int seconds, int distance, int weight) {
